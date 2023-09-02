@@ -1,0 +1,1 @@
+fun main() = println("^[A-Z1-9].*".toRegex().matches(readln()))

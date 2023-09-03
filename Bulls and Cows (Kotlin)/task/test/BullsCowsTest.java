@@ -22,7 +22,7 @@ public class BullsCowsTest extends StageTest<String> {
 
         for (int i = 0; i <= 9; i++) {
             if (main.isFinished()) {
-                break; // if game has stopped, stop cycle and start check the results;
+                break; // if game has stopped, stop cycle and start check of results;
             }
             output = main.execute(Integer.toString(i));
             int[] result = getNumOfBullsAndCows(output);
@@ -33,7 +33,7 @@ public class BullsCowsTest extends StageTest<String> {
 
         // if we got less or more than 1 answer, the program work is incorrect
         if (gotAnswer != 1) {
-            return CheckResult.wrong("The game has no answer or more than one.");
+            return CheckResult.wrong("The game has no answer or more than one. ");
         }
 
         return CheckResult.correct();
@@ -107,7 +107,6 @@ public class BullsCowsTest extends StageTest<String> {
         }
     }
 
-
     Integer[] getUsedNumbers(TestedProgram main, int length) {
         Integer[] nums = new Integer[length];
         int[] result;
@@ -130,7 +129,6 @@ public class BullsCowsTest extends StageTest<String> {
             if (result[0] == 1) {
                 nums[index++] = i;
             }
-
             if (index == length) {
                 break;
             }
@@ -138,8 +136,8 @@ public class BullsCowsTest extends StageTest<String> {
 
         if (index != length) {
             throw new WrongAnswer(
-                "Output should contain " + length + " bulls " +
-                        "summarized as every option was tried. Found: " + index
+                    "Output should contain " + length + " bulls " +
+                    "summarized as every option was tried. Found: " + index
             );
         }
 
@@ -189,8 +187,8 @@ public class BullsCowsTest extends StageTest<String> {
     // get number of bulls and cows from user program's output
     int[] getNumOfBullsAndCows(String userString) {
         Matcher nonePattern = Pattern.compile("\\b[nN]one\\b").matcher(userString);
-        Matcher cowsPattern = Pattern.compile("\\b\\d [cC]ows?").matcher(userString);
-        Matcher bullsPattern = Pattern.compile("\\b\\d [bB]ulls?").matcher(userString);
+        Matcher cowsPattern = Pattern.compile("\\b\\d [cC]ow").matcher(userString);
+        Matcher bullsPattern = Pattern.compile("\\b\\d [bB]ull").matcher(userString);
         Pattern oneNumPattern = Pattern.compile("\\d");
 
         if (nonePattern.find()) {
@@ -218,7 +216,7 @@ public class BullsCowsTest extends StageTest<String> {
 
         if (!found) {
             throw new WrongAnswer(
-                "Cannot find number of bulls or number of cows or None after the input."
+                    "Cannot find number of bulls or number of cows or None after the input."
             );
         }
 

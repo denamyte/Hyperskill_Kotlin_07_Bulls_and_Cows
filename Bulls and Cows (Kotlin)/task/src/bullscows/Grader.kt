@@ -1,6 +1,6 @@
 package bullscows
 
-class Grader(val code: String) {
+class Grader(private val code: String) {
     fun grade(sample: String): Pair<Int, Int> {
         var bulls = 0
         var cows = 0

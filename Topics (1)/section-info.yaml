@@ -8,3 +8,6 @@ content:
   - Member functions
   - Integers in action
   - Taming exceptions
+  - Null safety
+  - Type system
+  - The try-catch statement

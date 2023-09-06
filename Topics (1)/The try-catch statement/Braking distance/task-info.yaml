@@ -1,0 +1,15 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    highlight_level: NONE
+    text: "import kotlin.Exception        \n\nfun calculateBrakingDistance(v1: String,\
+    \ a: String): Int {\n    // write your code here\n}"
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/16212#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Wed, 06 Sep 2023 20:42:16 UTC"
+record: -1
+submission_language: kotlin

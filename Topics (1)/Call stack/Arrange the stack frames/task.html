@@ -1,0 +1,17 @@
+<h2>Arrange the stack frames</h2>
+<div class="step-text">
+<p></p>
+<p>There is a small program with three functions:</p>
+<pre><code class="language-kotlin">fun repeat(s: String): String {
+    return s + s
+}
+
+fun printLine(str: String) {
+    println(str)
+}
+
+fun main() {
+    printLine(repeat("Hello!"))
+}</code></pre>
+<p>Sort the lines in the order, in which stack frames will be pushed and removed to/from the call stack when running the <code class="language-kotlin">main</code> function. The first operation should be on the top.</p>
+</div>

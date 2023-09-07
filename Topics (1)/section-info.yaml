@@ -11,3 +11,6 @@ content:
   - Null safety
   - Type system
   - The try-catch statement
+  - Processing strings
+  - Call stack
+  - Scopes

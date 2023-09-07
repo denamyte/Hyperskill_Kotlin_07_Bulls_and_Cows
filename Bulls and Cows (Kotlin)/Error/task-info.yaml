@@ -405,6 +405,91 @@ files:
           }
       }
     learner_created: false
+  - name: src/bullscows/Generator.kt
+    visible: true
+    text: |-
+      package bullscows
+      
+      import kotlin.math.min
+      
+      class Generator(
+          val codeLength: Int,
+          val symbolsNumber: Int
+      ) {
+          val chars = (('0'..'9') + ('a'..'z'))
+      
+          fun generate() = chars
+              .subList(0, symbolsNumber)
+              .shuffled()
+              .subList(0, codeLength)
+              .joinToString("")
+      }
+    learner_created: true
+  - name: src/bullscows/ConsoleIO.kt
+    visible: true
+    text: |-
+      package bullscows
+      
+      import kotlin.math.min
+      
+      class ConsoleIO {
+          fun inputCodeLength(): Int {
+              while (true) {
+                  println("Please, enter the secret code's length:")
+                  val length = readln().toInt()
+                  if (length > 36)
+                      println("Error: bla-bla...")
+                  else return length
+              }
+          }
+      
+          fun inputSymbolsNumber(): Int {
+              println("Input the number of possible symbols in the code:")
+              return readln().toInt()
+          }
+      
+          fun codeMessage(gen: Generator) {
+              val asterisks = "*".repeat(gen.codeLength)
+              val lastIndex = gen.symbolsNumber - 1
+              val brackets1 = "0-${min(lastIndex, 9)}"
+              val brackets2 = if (lastIndex < 10) "" else ", a-${gen.chars[lastIndex]}"
+              println("The secret is prepared: $asterisks ($brackets1$brackets2).")
+          }
+      
+          fun graderMessage(res: Pair<Int, Int>) {
+              val sb = StringBuilder("Grade: ")
+              val first = res.first > 0
+              val second = res.second > 0
+              if (first) sb.append("${res.first} bull(s)")
+              if (first && second) sb.append(" and ")
+              if (second) sb.append("${res.second} cow(s)")
+              if (!first && !second) sb.append("None")
+              println(sb.toString())
+          }
+      
+          fun start() = println("Okay, let's start a game!")
+          fun turns(turns: Int) = println("Turn $turns:")
+          fun congrats() = println("Congratulations! You guessed the secret code.")
+      }
+    learner_created: true
+  - name: src/bullscows/Grader.kt
+    visible: true
+    text: |-
+      package bullscows
+      
+      class Grader(private val code: String) {
+          fun grade(sample: String): Pair<Int, Int> {
+              var bulls = 0
+              var cows = 0
+              sample.forEachIndexed{i, c ->
+                  when {
+                      code[i] == c -> bulls += 1
+                      code.contains(c) -> cows += 1
+                  }}
+              return Pair(bulls, cows)
+          }
+      }
+    learner_created: true
 feedback_link: https://hyperskill.org/learn/step/30282#comment
 status: Unchecked
 record: -1
